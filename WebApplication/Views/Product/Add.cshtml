@@ -1,0 +1,32 @@
+@model object
+
+@{
+    ViewBag.Title = "Add product";
+    Layout = "_Layout";
+}
+
+<h2 class="text-center">Add product</h2>
+<div class="container">
+    <form method="post">
+        <div class="form-group">
+            <label for="name">Product Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Product Name"
+                   pattern="[a-zZ-Z0-9\s]{3-16}">
+        </div>
+    </form>
+    <button class="btn btn-primary" onclick="add()">Submit</button>
+</div>
+<script>
+    function add() {
+        $(document).ready(function () {
+            var name = $('#name').val();
+            $.ajax({
+                type: 'put',
+                url: '/prod?name=' + name,
+                success: function (data) {
+                    window.location.href = '/'
+                },
+            });
+        })
+    }
+</script>

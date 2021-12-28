@@ -1,0 +1,18 @@
+@model object
+
+@{
+    ViewBag.Title = "Edit product #" + ViewBag.Product.Name;
+    Layout = "_Layout";
+}
+
+<h2 class="text-center">Edit product @ViewBag.Product.Name</h2>
+<div class="container">
+    <form action="/prod/@ViewBag.Product.Id" method="post">
+         <input type="hidden" name="id" value="@ViewBag.Product.Id">
+        <div class="form-group">
+            <label for="name">Product Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Product Name" value="@ViewBag.Product.Name" pattern="[a-zZ-Z0-9\s]{3-16}">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
